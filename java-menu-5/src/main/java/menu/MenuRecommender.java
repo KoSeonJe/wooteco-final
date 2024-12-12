@@ -1,6 +1,8 @@
 package menu;
 
 import java.util.List;
+import menu.service.CoachService;
+import menu.view.ApplicationView;
 
 public class MenuRecommender {
 
@@ -12,12 +14,14 @@ public class MenuRecommender {
         this.coachService = coachService;
     }
 
-    public void recommend() {
+    public void execute() {
         applicationView.introduce();
 
         requestCoach();
 
         requestHateFood();
+
+
     }
 
     private void requestCoach() {

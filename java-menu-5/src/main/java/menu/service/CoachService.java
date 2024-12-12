@@ -1,7 +1,9 @@
-package menu;
+package menu.service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import menu.domain.Coach;
+import menu.repository.CoachRepository;
 
 public class CoachService {
 
