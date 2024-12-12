@@ -28,14 +28,16 @@ public class RecommendService {
         List<String> categories = foodRepository.getAllCategories();
         List<String> recommendCategories = createRecommendCategories(categories);
         List<Coach> coaches = coachRepository.getAll();
-        coaches.forEach(coach -> {
-            Recommend recommend = Recommend.create(coach.getName(), recommendCategories);
-            recommendCategories.forEach(recommendCategory -> {
+        recommendCategories.forEach(recommendCategory -> {
+            coaches.forEach(coach -> {
                 List<String> menus = foodRepository.getMenusByCategory(recommendCategory);
                 String recommendFood = getRecommendFood(coach, menus);
-                recommend.addFood(recommendFood);
+                coach.addRecommendFood(recommendFood);
             });
-            recommendRepository.add(recommend);
+        });
+
+        coaches.forEach(coach -> {
+            recommendRepository.add(Recommend.create(coach.getName(), recommendCategories, coach.getRecommendFoods()));
         });
     }
 

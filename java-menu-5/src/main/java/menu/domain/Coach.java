@@ -33,15 +33,15 @@ public class Coach {
         this.hateFoods = hateFoods;
     }
 
-    public void addRecommendFood(String recommendFood) {
-        this.recommendFoods.add(recommendFood);
-    }
-
     public boolean isHateFood(String recommendFood) {
         return hateFoods.contains(recommendFood);
     }
 
     public boolean isDuplicate(String recommendFood) {
         return recommendFoods.contains(recommendFood);
+    }
+
+    public void addRecommendFood(String recommendFood) {
+        this.recommendFoods.add(recommendFood);
     }
 }

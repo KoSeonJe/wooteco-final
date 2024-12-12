@@ -17,26 +17,25 @@ public class OutputView {
         println(INTRODUCE_MESSAGE);
     }
 
-    private void println(String message) {
-        System.out.println(message);
-    }
-
     public void printResult(List<Recommend> recommends) {
+        println(LINE_BREAKER + RESULT_MESSAGE);
         println(DAYS);
         List<String> category = recommends.get(0).getCategories();
-        System.out.printf(CATEGORIES, category.get(0),  category.get(1),  category.get(2),  category.get(3),  category.get(4));
-        println(LINE_BREAKER);
+        System.out.printf(CATEGORIES + LINE_BREAKER, category.get(0),  category.get(1),  category.get(2),  category.get(3),  category.get(4));
         for (Recommend recommend : recommends) {
-            System.out.printf(EACH_COACH_RECOMMEND,
+            System.out.printf(EACH_COACH_RECOMMEND + LINE_BREAKER,
                 recommend.getCoachName(),
                 recommend.getMenus().get(0),
                 recommend.getMenus().get(1),
                 recommend.getMenus().get(2),
                 recommend.getMenus().get(3),
                 recommend.getMenus().get(4)
-                );
-            println(LINE_BREAKER);
+            );
         }
-        println(FINISH);
+        println(LINE_BREAKER + FINISH);
+    }
+
+    private void println(String message) {
+        System.out.println(message);
     }
 }

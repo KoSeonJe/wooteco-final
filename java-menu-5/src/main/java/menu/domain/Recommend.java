@@ -9,10 +9,10 @@ public class Recommend {
     private List<String> categories;
     private List<String> menus;
 
-    private Recommend(String coachName, List<String> categories) {
+    private Recommend(String coachName, List<String> categories, List<String> menus) {
         this.coachName = coachName;
         this.categories = categories;
-        this.menus = new ArrayList<>();
+        this.menus = menus;
     }
 
     public String getCoachName() {
@@ -27,11 +27,7 @@ public class Recommend {
         return menus;
     }
 
-    public static Recommend create(String coachName, List<String> categories) {
-        return new Recommend(coachName, categories);
-    }
-
-    public void addFood(String recommendFood) {
-        menus.add(recommendFood);
+    public static Recommend create(String coachName, List<String> categories, List<String> menus) {
+        return new Recommend(coachName, categories, menus);
     }
 }
