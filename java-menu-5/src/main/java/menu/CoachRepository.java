@@ -2,6 +2,7 @@ package menu;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class CoachRepository {
 
@@ -27,5 +28,12 @@ public class CoachRepository {
 
     public List<Coach> getAll() {
         return new ArrayList<>(repository);
+    }
+
+    public Coach findByName(String coachName) {
+        return repository.stream()
+            .filter(coach -> Objects.equals(coach.getName(), coachName))
+            .findFirst()
+            .orElse(null);
     }
 }

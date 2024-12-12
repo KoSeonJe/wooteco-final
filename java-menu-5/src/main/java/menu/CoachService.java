@@ -24,4 +24,12 @@ public class CoachService {
             .map(Coach::getName)
             .collect(Collectors.toList());
     }
+
+    public void updateHateFoods(String coachName, List<String> hateFoods) {
+        Coach coach = coachRepository.findByName(coachName);
+        if (coach == null) {
+            return;
+        }
+        coach.updateHateFoods(hateFoods);
+    }
 }
