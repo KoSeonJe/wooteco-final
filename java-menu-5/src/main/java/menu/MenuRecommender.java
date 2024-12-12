@@ -21,7 +21,7 @@ public class MenuRecommender {
 
         requestHateFood();
 
-
+        recommend();
     }
 
     private void requestCoach() {
@@ -35,5 +35,8 @@ public class MenuRecommender {
             List<String> hateFoods = applicationView.inputHateFoods(coachName);
             coachService.updateHateFoods(coachName, hateFoods);
         });
+    }
+
+    private void recommend() {
     }
 }
