@@ -1,6 +1,11 @@
 package menu;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ApplicationView {
+
+    private static final String COACH_NAME_DELIMITER = ",";
 
     private final InputView inputView;
     private final OutputView outputView;
@@ -12,5 +17,10 @@ public class ApplicationView {
 
     public void introduce() {
         outputView.printIntroduce();
+    }
+
+    public List<String> inputCoach() {
+        String coachNames = inputView.inputCoach();
+        return new ArrayList<>(List.of(coachNames.split(COACH_NAME_DELIMITER)));
     }
 }
