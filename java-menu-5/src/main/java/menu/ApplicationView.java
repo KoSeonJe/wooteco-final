@@ -6,6 +6,7 @@ import java.util.List;
 public class ApplicationView {
 
     private static final String COACH_NAME_DELIMITER = ",";
+    private static final String HATE_FOOD_DELIMITER = ",";
 
     private final InputView inputView;
     private final OutputView outputView;
@@ -22,5 +23,10 @@ public class ApplicationView {
     public List<String> inputCoach() {
         String coachNames = inputView.inputCoach();
         return new ArrayList<>(List.of(coachNames.split(COACH_NAME_DELIMITER)));
+    }
+
+    public List<String> inputHateFoods(String coachName) {
+        String hateFoods = inputView.inputHateFoods(coachName);
+        return new ArrayList<>(List.of(hateFoods.split(HATE_FOOD_DELIMITER)));
     }
 }
