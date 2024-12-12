@@ -2,6 +2,7 @@ package menu.view;
 
 import java.util.ArrayList;
 import java.util.List;
+import menu.domain.Recommend;
 
 public class ApplicationView {
 
@@ -28,5 +29,9 @@ public class ApplicationView {
     public List<String> inputHateFoods(String coachName) {
         String hateFoods = inputView.inputHateFoods(coachName);
         return new ArrayList<>(List.of(hateFoods.split(HATE_FOOD_DELIMITER)));
+    }
+
+    public void printResult(List<Recommend> recommends) {
+        outputView.printResult(recommends);
     }
 }

@@ -6,31 +6,41 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import menu.domain.Coach;
+import menu.domain.Recommend;
 import menu.repository.CoachRepository;
 import menu.repository.FoodRepository;
+import menu.repository.RecommendRepository;
 
 public class RecommendService {
 
     private final FoodRepository foodRepository;
     private final CoachRepository coachRepository;
+    private final RecommendRepository recommendRepository;
 
-    public RecommendService(FoodRepository foodRepository, CoachRepository coachRepository) {
+    public RecommendService(FoodRepository foodRepository, CoachRepository coachRepository,
+        RecommendRepository recommendRepository) {
         this.foodRepository = foodRepository;
         this.coachRepository = coachRepository;
+        this.recommendRepository = recommendRepository;
     }
-
 
     public void recommend() {
         List<String> categories = foodRepository.getAllCategories();
         List<String> recommendCategories = createRecommendCategories(categories);
         List<Coach> coaches = coachRepository.getAll();
         coaches.forEach(coach -> {
+            Recommend recommend = Recommend.create(coach.getName(), recommendCategories);
             recommendCategories.forEach(recommendCategory -> {
                 List<String> menus = foodRepository.getMenusByCategory(recommendCategory);
                 String recommendFood = getRecommendFood(coach, menus);
-                coach.addRecommendFood(recommendFood);
+                recommend.addFood(recommendFood);
             });
+            recommendRepository.add(recommend);
         });
+    }
+
+    public List<Recommend> getAllRecommends() {
+        return recommendRepository.getAll();
     }
 
     private List<String> createRecommendCategories(List<String> categories) {

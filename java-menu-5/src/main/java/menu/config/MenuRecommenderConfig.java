@@ -3,6 +3,7 @@ package menu.config;
 import menu.MenuRecommender;
 import menu.repository.CoachRepository;
 import menu.repository.FoodRepository;
+import menu.repository.RecommendRepository;
 import menu.service.CoachService;
 import menu.service.RecommendService;
 import menu.view.ApplicationView;
@@ -28,6 +29,6 @@ public class MenuRecommenderConfig {
     }
 
     private RecommendService recommendService() {
-        return new RecommendService(FoodRepository.getInstance(), coachRepository());
+        return new RecommendService(FoodRepository.getInstance(), coachRepository(), RecommendRepository.getInstance());
     }
 }

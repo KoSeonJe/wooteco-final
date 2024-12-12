@@ -1,6 +1,7 @@
 package menu;
 
 import java.util.List;
+import menu.domain.Recommend;
 import menu.service.CoachService;
 import menu.service.RecommendService;
 import menu.view.ApplicationView;
@@ -26,6 +27,8 @@ public class MenuRecommender {
         requestHateFood();
 
         recommend();
+
+        showResult();
     }
 
     private void requestCoach() {
@@ -43,5 +46,10 @@ public class MenuRecommender {
 
     private void recommend() {
         recommendService.recommend();
+    }
+
+    private void showResult() {
+        List<Recommend> recommends = recommendService.getAllRecommends();
+        applicationView.printResult(recommends);
     }
 }
