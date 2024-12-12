@@ -1,5 +1,6 @@
 package menu.common;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,5 +25,17 @@ public class DataInitializer {
             foodMenus.put(category, menus);
         }
         return foodMenus;
+    }
+
+    public static List<String> initCategory() {
+        StringTokenizer tokenizer = new StringTokenizer(FOOD_DATA, "\n");
+        List<String> categories = new ArrayList<>();
+        categories.add(" ");
+        while (tokenizer.hasMoreTokens()) {
+            String token = tokenizer.nextToken();
+            String category = token.split(": ")[0];
+            categories.add(category);
+        }
+        return categories;
     }
 }

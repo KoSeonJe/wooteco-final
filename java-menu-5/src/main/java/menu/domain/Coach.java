@@ -1,11 +1,13 @@
 package menu.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Coach {
 
     private String name;
-    private List<String> hateFoods;
+    private List<String> hateFoods = new ArrayList<>();
+    private List<String> recommendFoods = new ArrayList<>();
 
     public Coach(String name) {
         this.name = name;
@@ -23,7 +25,23 @@ public class Coach {
         return hateFoods;
     }
 
+    public List<String> getRecommendFoods() {
+        return recommendFoods;
+    }
+
     public void updateHateFoods(List<String> hateFoods) {
         this.hateFoods = hateFoods;
+    }
+
+    public void addRecommendFood(String recommendFood) {
+        this.recommendFoods.add(recommendFood);
+    }
+
+    public boolean isHateFood(String recommendFood) {
+        return hateFoods.contains(recommendFood);
+    }
+
+    public boolean isDuplicate(String recommendFood) {
+        return recommendFoods.contains(recommendFood);
     }
 }
