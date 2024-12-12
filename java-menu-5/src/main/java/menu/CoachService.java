@@ -17,4 +17,11 @@ public class CoachService {
             .collect(Collectors.toList());
         coachRepository.saveAll(coaches);
     }
+
+    public List<String> getAllNames() {
+        List<Coach> coaches = coachRepository.getAll();
+        return coaches.stream()
+            .map(Coach::getName)
+            .collect(Collectors.toList());
+    }
 }

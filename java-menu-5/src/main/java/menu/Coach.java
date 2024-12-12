@@ -11,4 +11,8 @@ public class Coach {
     public static Coach create(String name) {
         return new Coach(name);
     }
+
+    public String getName() {
+        return name;
+    }
 }

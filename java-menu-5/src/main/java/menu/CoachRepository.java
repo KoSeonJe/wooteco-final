@@ -13,7 +13,7 @@ public class CoachRepository {
 
     }
 
-    public CoachRepository getInstance() {
+    public static CoachRepository getInstance() {
         return INSTANCE;
     }
 
@@ -23,5 +23,9 @@ public class CoachRepository {
 
     public void saveAll(List<Coach> coaches) {
         repository.addAll(coaches);
+    }
+
+    public List<Coach> getAll() {
+        return new ArrayList<>(repository);
     }
 }
