@@ -3,7 +3,8 @@ package menu.service;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.util.Objects;
+import java.util.stream.Collectors;
 import menu.domain.Coach;
 import menu.repository.CoachRepository;
 import menu.repository.FoodRepository;
@@ -35,11 +36,26 @@ public class RecommendService {
     private List<String> createRecommendCategories(List<String> categories) {
         List<String> recommendCategories = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            String category = categories.get(Randoms.pickNumberInRange(1, 5));
-            //TODO 3개 중복되면 예외
+            String category = getCategory(categories, recommendCategories);
             recommendCategories.add(category);
         }
         return recommendCategories;
+    }
+
+    private String getCategory(List<String> categories, List<String> recommendCategories) {
+        while (true) {
+            String category = categories.get(Randoms.pickNumberInRange(1, 5));
+            if (validateCategory(category, recommendCategories)) {
+                return category;
+            }
+        }
+    }
+
+    private boolean validateCategory(String category, List<String> recommendCategories) {
+        List<String> filtering = recommendCategories.stream()
+            .filter(recommendCategory -> Objects.equals(recommendCategory, category))
+            .collect(Collectors.toList());
+        return filtering.size() < 3;
     }
 
     private String getRecommendFood(Coach coach, List<String> menus) {
