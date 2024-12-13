@@ -10,6 +10,14 @@ public class HoliWorker {
         this.workCount = 0;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getWorkCount() {
+        return workCount;
+    }
+
     public static HoliWorker create(String name) {
         return new HoliWorker(name);
     }

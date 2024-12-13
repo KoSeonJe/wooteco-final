@@ -14,7 +14,23 @@ public class CustomMonth {
         this.lastDay = lastDay;
     }
 
+    public int getMonth() {
+        return month;
+    }
+
+    public List<Integer> getHolidays() {
+        return holidays;
+    }
+
+    public int getLastDay() {
+        return lastDay;
+    }
+
     public static CustomMonth create(int month, List<Integer> holidays, int lastDay) {
         return new CustomMonth(month, holidays, lastDay);
+    }
+
+    public boolean isHoliday(int i) {
+        return holidays.contains(i);
     }
 }

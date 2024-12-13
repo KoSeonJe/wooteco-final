@@ -6,6 +6,7 @@ import oncall.domain.DayOfWeek;
 import oncall.domain.HoliWorker;
 import oncall.domain.WeekWorker;
 import oncall.common.WorkerMapper;
+import oncall.vo.WorkingDayInfo;
 
 public class ApplicationView {
 
@@ -19,13 +20,13 @@ public class ApplicationView {
         this.workerMapper = workerMapper;
     }
 
-    public List<String> inputWorkingDayInfo() {
+    public WorkingDayInfo inputWorkingDayInfo() {
         while (true) {
             try {
                 String input = inputView.inputWorkingDayInfo();
                 List<String> workingDayInfo = new ArrayList<>(List.of(input.split(",")));
                 validateWorkingDay(workingDayInfo);
-                return workingDayInfo;
+                return new WorkingDayInfo(Integer.parseInt(workingDayInfo.get(0)), workingDayInfo.get(1));
             } catch (IllegalArgumentException e) {
                 outputView.printIllegalError();
             }

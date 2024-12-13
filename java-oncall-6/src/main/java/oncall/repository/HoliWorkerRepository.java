@@ -20,4 +20,8 @@ public class HoliWorkerRepository {
     public void saveAll(List<HoliWorker> inputWeekWorkers) {
         holiWorkers.addAll(inputWeekWorkers);
     }
+
+    public List<HoliWorker> getAll() {
+        return new ArrayList<>(holiWorkers);
+    }
 }

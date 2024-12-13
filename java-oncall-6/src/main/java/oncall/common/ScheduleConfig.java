@@ -7,7 +7,7 @@ import oncall.repository.WorkRepository;
 import oncall.view.ApplicationView;
 import oncall.view.InputView;
 import oncall.view.OutputView;
-import oncall.view.WorkService;
+import oncall.service.WorkService;
 
 public class ScheduleConfig {
 

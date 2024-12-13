@@ -20,4 +20,8 @@ public class WeekWorkerRepository {
     public void saveAll(List<WeekWorker> inputWeekWorkers) {
         weekWorkers.addAll(inputWeekWorkers);
     }
+
+    public List<WeekWorker> getAll() {
+        return new ArrayList<>(weekWorkers);
+    }
 }

@@ -10,6 +10,14 @@ public class WeekWorker {
         this.workCount = 0;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getWorkCount() {
+        return workCount;
+    }
+
     public static WeekWorker create(String name) {
         return new WeekWorker(name);
     }

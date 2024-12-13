@@ -4,7 +4,8 @@ import java.util.List;
 import oncall.domain.HoliWorker;
 import oncall.domain.WeekWorker;
 import oncall.view.ApplicationView;
-import oncall.view.WorkService;
+import oncall.service.WorkService;
+import oncall.vo.WorkingDayInfo;
 
 public class WorkScheduler {
 
@@ -17,9 +18,11 @@ public class WorkScheduler {
     }
 
     public void execute() {
-        List<String> workingDayInfo = applicationView.inputWorkingDayInfo();
+        WorkingDayInfo workingDayInfo = applicationView.inputWorkingDayInfo();
 
         requireWorker();
+
+        scheduling(workingDayInfo);
     }
 
     private void requireWorker() {
@@ -27,5 +30,9 @@ public class WorkScheduler {
         List<HoliWorker> holiWorkers = applicationView.requireHoliWorker();
         workService.saveWeekWorkers(weekWorkers);
         workService.saveHoliWorkers(holiWorkers);
+    }
+
+    private void scheduling(WorkingDayInfo workingDayInfo) {
+        workService.createWorkSchedule(workingDayInfo);
     }
 }

@@ -8,12 +8,16 @@ public class WorkRepository {
 
     private static final WorkRepository INSTANCE = new WorkRepository();
 
-    private final List<Work> works = new ArrayList<>();
+    private final List<Work> repository = new ArrayList<>();
 
     private WorkRepository() {
     }
 
     public static WorkRepository getInstance() {
         return INSTANCE;
+    }
+
+    public void save(Work work) {
+        repository.add(work);
     }
 }

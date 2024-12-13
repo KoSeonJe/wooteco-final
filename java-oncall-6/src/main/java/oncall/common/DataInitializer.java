@@ -4,14 +4,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import oncall.domain.CustomMonth;
-import oncall.repository.MonthRepository;
+import oncall.repository.CustomMonthRepository;
 
 public class DataInitializer {
 
-    private final MonthRepository monthRepository;
+    private final CustomMonthRepository customMonthRepository;
 
-    public DataInitializer(MonthRepository monthRepository) {
-        this.monthRepository = monthRepository;
+    public DataInitializer(CustomMonthRepository customMonthRepository) {
+        this.customMonthRepository = customMonthRepository;
     }
 
     public static Map<Integer, CustomMonth> initMonth() {
