@@ -7,10 +7,12 @@ public class ApplicationView {
 
     private final InputView inputView;
     private final OutputView outputView;
+    private final WorkerMapper workerMapper;
 
-    public ApplicationView(InputView inputView, OutputView outputView) {
+    public ApplicationView(InputView inputView, OutputView outputView, WorkerMapper workerMapper) {
         this.inputView = inputView;
         this.outputView = outputView;
+        this.workerMapper = workerMapper;
     }
 
     public List<String> inputWorkingDayInfo() {
@@ -24,7 +26,11 @@ public class ApplicationView {
                 outputView.printIllegalError();
             }
         }
+    }
 
+    public List<WeekWorker> requireWeekWorker() {
+        String input = inputView.inputWeekWorker();
+        return workerMapper.toWeekWorkers(input);
     }
 
     private void validateWorkingDay(List<String> workingDayInfo) {
