@@ -33,6 +33,11 @@ public class ApplicationView {
         return workerMapper.toWeekWorkers(input);
     }
 
+    public List<HoliWorker> requireHoliWorker() {
+        String input = inputView.inputHoliWorker();
+        return workerMapper.toHoliWorkers(input);
+    }
+
     private void validateWorkingDay(List<String> workingDayInfo) {
         int month = Integer.parseInt(workingDayInfo.get(0));
         String dayOfWeek = workingDayInfo.get(1);
