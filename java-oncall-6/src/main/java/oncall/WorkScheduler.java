@@ -3,6 +3,7 @@ package oncall;
 import java.util.List;
 import oncall.domain.HoliWorker;
 import oncall.domain.WeekWorker;
+import oncall.domain.Work;
 import oncall.view.ApplicationView;
 import oncall.service.WorkService;
 import oncall.vo.WorkingDayInfo;
@@ -23,6 +24,8 @@ public class WorkScheduler {
         requireWorker();
 
         scheduling(workingDayInfo);
+
+        printWorkSchedule();
     }
 
     private void requireWorker() {
@@ -34,5 +37,10 @@ public class WorkScheduler {
 
     private void scheduling(WorkingDayInfo workingDayInfo) {
         workService.createWorkSchedule(workingDayInfo);
+    }
+
+    private void printWorkSchedule() {
+        List<Work> works = workService.getAllWorks();
+        applicationView.printWorkSchedule(works);
     }
 }

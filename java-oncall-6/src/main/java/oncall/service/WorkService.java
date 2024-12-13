@@ -46,14 +46,22 @@ public class WorkService {
         List<HoliWorker> holiWorkers = holiWorkerRepository.getAll();
         int weekCount = 0;
         int holiCount = 0;
+        int currentDay = dayOfWeek.getNumber();
         for (int i = 0; i < customMonth.getLastDay(); i++) {
-            if (customMonth.isHoliday(i) || DayOfWeek.isWeekend(dayOfWeek)) {
-                workRepository.save(new Work(customMonth, dayOfWeek, holiWorkers.get(holiCount).getName()));
+            DayOfWeek current = DayOfWeek.findByNumber(currentDay);
+            if (customMonth.isHoliday(i) || DayOfWeek.isWeekend(current)) {
+                workRepository.save(new Work(customMonth, current, holiWorkers.get(holiCount).getName()));
                 holiCount = (holiCount + 1) % holiWorkers.size();
+                currentDay = (currentDay + 1) % 7;
                 continue;
             }
-            workRepository.save(new Work(customMonth, dayOfWeek, weekWorkers.get(weekCount).getName()));
+            workRepository.save(new Work(customMonth, current, weekWorkers.get(weekCount).getName()));
             weekCount = (weekCount + 1) % weekWorkers.size();
+            currentDay = (currentDay + 1) % 7;
         }
+    }
+
+    public List<Work> getAllWorks() {
+        return workRepository.getAll();
     }
 }

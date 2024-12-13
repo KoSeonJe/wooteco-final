@@ -11,4 +11,16 @@ public class Work {
         this.dayOfWeek = dayOfWeek;
         this.worker = worker;
     }
+
+    public CustomMonth getCustomMonth() {
+        return customMonth;
+    }
+
+    public DayOfWeek getDayOfWeek() {
+        return dayOfWeek;
+    }
+
+    public String getWorker() {
+        return worker;
+    }
 }

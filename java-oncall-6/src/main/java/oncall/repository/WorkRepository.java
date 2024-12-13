@@ -20,4 +20,8 @@ public class WorkRepository {
     public void save(Work work) {
         repository.add(work);
     }
+
+    public List<Work> getAll() {
+        return new ArrayList<>(repository);
+    }
 }

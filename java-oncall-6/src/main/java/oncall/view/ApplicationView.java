@@ -6,6 +6,7 @@ import oncall.domain.DayOfWeek;
 import oncall.domain.HoliWorker;
 import oncall.domain.WeekWorker;
 import oncall.common.WorkerMapper;
+import oncall.domain.Work;
 import oncall.vo.WorkingDayInfo;
 
 public class ApplicationView {
@@ -53,5 +54,9 @@ public class ApplicationView {
         if (!DayOfWeek.isExist(dayOfWeek)) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public void printWorkSchedule(List<Work> works) {
+        outputView.printWorkSchedule(works);
     }
 }

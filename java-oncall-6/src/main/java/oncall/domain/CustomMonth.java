@@ -31,6 +31,9 @@ public class CustomMonth {
     }
 
     public boolean isHoliday(int i) {
+        if (holidays == null) {
+            return false;
+        }
         return holidays.contains(i);
     }
 }

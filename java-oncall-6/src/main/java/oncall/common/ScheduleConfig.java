@@ -1,6 +1,7 @@
 package oncall.common;
 
 import oncall.WorkScheduler;
+import oncall.repository.CustomMonthRepository;
 import oncall.repository.HoliWorkerRepository;
 import oncall.repository.WeekWorkerRepository;
 import oncall.repository.WorkRepository;
@@ -20,7 +21,7 @@ public class ScheduleConfig {
     }
 
     private WorkService workService() {
-        return new WorkService(workRepository(), weekWorkerRepository(), holiWorkerRepository());
+        return new WorkService(workRepository(), weekWorkerRepository(), holiWorkerRepository(), customMonthRepository());
     }
 
     private WorkRepository workRepository() {
@@ -33,5 +34,9 @@ public class ScheduleConfig {
 
     private HoliWorkerRepository holiWorkerRepository() {
         return HoliWorkerRepository.getInstance();
+    }
+
+    private CustomMonthRepository customMonthRepository() {
+        return CustomMonthRepository.getInstance();
     }
 }
