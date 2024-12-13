@@ -1,6 +1,8 @@
-package oncall;
+package oncall.common;
 
 import java.util.List;
+import oncall.domain.HoliWorker;
+import oncall.domain.WeekWorker;
 
 public class WorkerMapper {
 

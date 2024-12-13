@@ -1,4 +1,4 @@
-package oncall;
+package oncall.view;
 
 import camp.nextstep.edu.missionutils.Console;
 

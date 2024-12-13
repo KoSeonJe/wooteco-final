@@ -1,7 +1,8 @@
-package oncall;
+package oncall.repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import oncall.domain.Work;
 
 public class WorkRepository {
 

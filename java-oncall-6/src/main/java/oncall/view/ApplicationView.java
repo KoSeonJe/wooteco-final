@@ -1,7 +1,11 @@
-package oncall;
+package oncall.view;
 
 import java.util.ArrayList;
 import java.util.List;
+import oncall.domain.DayOfWeek;
+import oncall.domain.HoliWorker;
+import oncall.domain.WeekWorker;
+import oncall.common.WorkerMapper;
 
 public class ApplicationView {
 
